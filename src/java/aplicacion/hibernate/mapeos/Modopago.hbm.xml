@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Jun 5, 2019 12:08:54 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Jun 11, 2019 1:12:10 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="aplicacion.hibernate.mapeos.Modopago" table="modopago" catalog="proyecto" optimistic-lock="version">
+    <class name="aplicacion.hibernate.mapeos.Modopago" table="modopago" catalog="proyecto">
         <id name="idmodoPago" type="int">
             <column name="idmodoPago" />
-            <generator class="assigned" />
+            <generator class="assigned"></generator>
         </id>
         <property name="descripcion" type="string">
             <column name="descripcion" length="45" />

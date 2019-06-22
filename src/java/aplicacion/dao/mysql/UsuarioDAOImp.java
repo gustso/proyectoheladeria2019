@@ -26,11 +26,11 @@ public class UsuarioDAOImp implements IUsuarioDAO{
         Session session = NewHibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         Criteria criteria = session.createCriteria(Usuario.class);
-        criteria.add(Restrictions.like("nombreUsuario", nombreUsuario));
-        criteria.add(Restrictions.like("password", password));        
+        criteria.add(Restrictions.like("nombreUsuario", nombreUsuario));        
+        criteria.add(Restrictions.like("password", password));                
         criteria.add(Restrictions.eq("estado",true));
-        if(!criteria.list().isEmpty())
-            u = (Usuario)criteria.list().get(0);        
+        if(!criteria.list().isEmpty()){            
+            u = (Usuario)criteria.list().get(0);        }
         session.getTransaction().commit();
         session.close();
         return u;      
@@ -40,7 +40,7 @@ public class UsuarioDAOImp implements IUsuarioDAO{
     @Override
     public Usuario obtenerUsuario(String nombreUsuario) {
         Usuario u = null;
-        Session session = NewHibernateUtil.getSessionFactory().getCurrentSession();
+        Session session = NewHibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         Criteria criteria = session.createCriteria(Usuario.class);
         criteria.add(Restrictions.like("nombreUser", nombreUsuario));
@@ -59,15 +59,13 @@ public class UsuarioDAOImp implements IUsuarioDAO{
     @Override
     public List<Usuario> obtenerListaUsuariosActivos(){
         List<Usuario> listado = new ArrayList();
-        Session session = NewHibernateUtil.getSessionFactory().getCurrentSession();
+        Session session = NewHibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         Criteria criteria = session.createCriteria(Usuario.class);
         criteria.add(Restrictions.like("estado", true));
         listado = criteria.list();
         session.getTransaction().commit();
-        session.close();
-        session.getTransaction().commit();
-        session.close();
+        session.close();        
         return listado;
     }
 
@@ -75,7 +73,7 @@ public class UsuarioDAOImp implements IUsuarioDAO{
     public void agregar(Usuario unUsuario) {
         Session session = NewHibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        session.update(unUsuario);
+        session.save(unUsuario);
         session.getTransaction().commit();
         session.close();
     }

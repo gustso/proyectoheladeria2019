@@ -1,26 +1,27 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Jun 5, 2019 12:08:54 PM by Hibernate Tools 4.3.1 -->
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 11, 2019 1:12:10 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="proyecto" name="aplicacion.hibernate.mapeos.Factura" optimistic-lock="version" table="factura">
-    <id name="numFactura" type="int">
-      <column name="numFactura"/>
-      <generator class="assigned"/>
-    </id>
-    <many-to-one class="aplicacion.hibernate.mapeos.Modopago" fetch="select" name="modopago">
-      <column name="modoPago_idmodoPago" not-null="true"/>
-    </many-to-one>
-    <many-to-one class="aplicacion.modelo.dominio.Usuario" fetch="select" name="usuarios">
-      <column name="usuarios_codigo" not-null="true"/>
-    </many-to-one>
-    <property name="fecha" type="timestamp">
-      <column length="19" name="fecha"/>
-    </property>
-    <set fetch="select" inverse="true" lazy="true" name="detalles" table="detalle">
-      <key>
-        <column name="factura_numFactura" not-null="true"/>
-      </key>
-      <one-to-many class="aplicacion.hibernate.mapeos.Detalle"/>
-    </set>
-  </class>
+    <class name="aplicacion.hibernate.mapeos.Factura" table="factura" catalog="proyecto">
+        <id name="numFactura" type="int">
+            <column name="numFactura" />
+            <generator class="assigned"></generator>
+        </id>
+        <many-to-one name="modopago" class="aplicacion.hibernate.mapeos.Modopago" fetch="select">
+            <column name="modoPago_idmodoPago" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuarios" class="aplicacion.modelo.dominio.Usuario" fetch="select">
+            <column name="usuarios_codigo" not-null="true" />
+        </many-to-one>
+        <property name="fecha" type="timestamp">
+            <column name="fecha" length="19" />
+        </property>
+        <set name="detalles" table="detalle" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="factura_numFactura" not-null="true" />
+            </key>
+            <one-to-many class="aplicacion.hibernate.mapeos.Detalle" />
+        </set>
+    </class>
 </hibernate-mapping>

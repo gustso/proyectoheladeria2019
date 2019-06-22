@@ -1,5 +1,5 @@
 package aplicacion.hibernate.mapeos;
-// Generated Jun 5, 2019 12:08:53 PM by Hibernate Tools 4.3.1
+// Generated Jun 11, 2019 1:12:09 PM by Hibernate Tools 4.3.1
 
 
 import aplicacion.modelo.dominio.Usuario;
@@ -23,12 +23,12 @@ public class Factura  implements java.io.Serializable {
     }
 
 	
-    public Factura(int numFactura, Modopago modopago,Usuario usuarios) {
+    public Factura(int numFactura, Modopago modopago, Usuario usuarios) {
         this.numFactura = numFactura;
         this.modopago = modopago;
         this.usuarios = usuarios;
     }
-    public Factura(int numFactura, Modopago modopago,Usuario usuarios, Date fecha, Set detalles) {
+    public Factura(int numFactura, Modopago modopago, Usuario usuarios, Date fecha, Set detalles) {
        this.numFactura = numFactura;
        this.modopago = modopago;
        this.usuarios = usuarios;
@@ -54,7 +54,7 @@ public class Factura  implements java.io.Serializable {
         return this.usuarios;
     }
     
-    public void setUsuarios (Usuario usuarios) {
+    public void setUsuarios(Usuario usuarios) {
         this.usuarios = usuarios;
     }
     public Date getFecha() {

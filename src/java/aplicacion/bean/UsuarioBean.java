@@ -8,6 +8,7 @@ package aplicacion.bean;
 import aplicacion.dao.IUsuarioDAO;
 import aplicacion.dao.mysql.UsuarioDAOImp;
 import aplicacion.modelo.dominio.Usuario;
+import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 
@@ -19,7 +20,7 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean
 @SessionScoped
-public class UsuarioBean {
+public class UsuarioBean implements Serializable{
 
     /**
      * Creates a new instance of UsuarioBean
@@ -33,6 +34,7 @@ public class UsuarioBean {
     }
     
     public void agregarUsuario(Usuario unUsuario){
-        
+        IUsuarioDAO usuarioDao = new UsuarioDAOImp();        
+        usuarioDao.agregar(unUsuario);
     }
 }

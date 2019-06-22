@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
@@ -29,26 +30,27 @@
                             <p:outputLabel for="txtDNI" value="DNI:"/>                    
                             <p:inputNumber id="txtDNI" value="#{clienteFormBean.unCliente.dni}" required="true" decimalPlaces="0" size="8"/>                                                        
                             <p:outputLabel for="txtEmail" value="E-mail:"/>                    
-                            <p:inputText id="txtEmail" value="#{clienteFormBean.unCliente.mail}" required="true"/>                                                        
+                            <p:inputText id="txtEmail" value="#{clienteFormBean.unCliente.mail}" required="true">
+                                <f:validator validatorId="emailValidator"/> <!-- se agrega para validar -->
+                            </p:inputText>                                                        
                             <p:commandButton id="btnAgregarUsuario" value="Crear Cuenta"
                                              actionListener="#{clienteFormBean.agregarCliente()}" 
-                                             update="mensajesAltaUsuario"
-                                             oncomplete="PF('agregarLibro').hide()">                                   
+                                             update="mensajesAltaUsuario">                                   
                                 <p:confirm header="Pedido de Confirmacion" 
-                                           message="¿Confirma Agregar Libro?" 
+                                           message="¿Confirma Agregar Usuario?" 
                                            icon="ui-icon-alert"/>
                             </p:commandButton>
-                            <p:commandButton id="btnCerrarAltaLibro"
+                            <p:commandButton id="btnCerrarAltaUsuario"
                                              value="Salir"
-                                             oncomplete="PF('agregarLibro').hide()"/>
+                                             action="login"/>
                         </p:panelGrid>
                     </h:form>
                 </p:panel>
 
-                <p:confirmDialog id="confirmacionDialogoLibro"
+                <p:confirmDialog id="confirmacionDialogoUsuario"
                                  global="true" showEffect="fade" 
                                  hideEffect="fade">
-                    <h:form id="frmConfirmacionOperacionLibro">
+                    <h:form id="frmConfirmacionOperacionUsuario">
                         <p:commandButton value="SI" type="button" 
                                          styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
                         <p:commandButton value="No" type="button" 

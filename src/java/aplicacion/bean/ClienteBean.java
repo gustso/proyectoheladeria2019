@@ -28,11 +28,8 @@ public class ClienteBean {
     public ClienteBean() {
     }
     
-    public void agregarCliente(Usuario unUsuario, Cliente unCliente){
-        IUsuarioDAO usuarioDAO = new UsuarioDAOImp();
-        usuarioDAO.agregar(unUsuario);
+    public void agregarCliente(Cliente unCliente){        
         IClienteDAO clienteDAO = new ClienteDAOImp();
-        clienteDAO.agregar(unCliente);
-        
+        clienteDAO.agregar(unCliente);        
     }
 }

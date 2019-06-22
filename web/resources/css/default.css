@@ -27,3 +27,7 @@ a:link:hover, a:visited:hover  {
   font-weight : bold;
   text-decoration : underline;
 }
+
+.carro-icon{
+    background-image: url("#{facesContext.externalContext.request.contextPath}/resources/images/carro.png") !important;
+}

@@ -42,12 +42,13 @@ public class LoginFormBean {
             FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO,
                     "Usuario Válido", "Usuario Válido");
             FacesContext.getCurrentInstance().addMessage(null, facesMessage);
-            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuarioValidado", usuario);
+            FacesContext.getCurrentInstance().getExternalContext()
+                    .getSessionMap().put("usuarioValidado", usuario);
             if (usuario.getTipoUsuario().equals("admin")){
                 resultado = "administrador?faces-redirect=true";
             }
             else {
-                resultado = "cliente?faces-redirect=true";
+                resultado = "productos";
             }
             
         }
@@ -64,7 +65,7 @@ public class LoginFormBean {
         FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO,
                 "Sesion Cerrada", "Sesion Cerrada");
         FacesContext.getCurrentInstance().addMessage(null, facesMessage);
-        String resultado = "/index?faces-redirect=true";
+        String resultado = "/login?faces-redirect=true";
         return resultado;
     }
 

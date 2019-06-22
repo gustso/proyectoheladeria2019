@@ -1,5 +1,8 @@
 package aplicacion.hibernate.mapeos;
-// Generated Jun 5, 2019 12:08:53 PM by Hibernate Tools 4.3.1
+// Generated Jun 11, 2019 1:12:09 PM by Hibernate Tools 4.3.1
+
+import aplicacion.modelo.dominio.Producto;
+
 
 
 
@@ -11,27 +14,22 @@ public class Detalle  implements java.io.Serializable {
 
      private int iddetalle;
      private Factura factura;
-     private Productos productos;
+     private Producto productos;
      private Integer cantidad;
      private String precioProdCant;
 
     public Detalle() {
     }
 
-	
-    public Detalle(int iddetalle, Factura factura, Productos productos) {
+    public Detalle(int iddetalle, Factura factura, Producto productos, Integer cantidad, String precioProdCant) {
         this.iddetalle = iddetalle;
         this.factura = factura;
         this.productos = productos;
+        this.cantidad = cantidad;
+        this.precioProdCant = precioProdCant;
     }
-    public Detalle(int iddetalle, Factura factura, Productos productos, Integer cantidad, String precioProdCant) {
-       this.iddetalle = iddetalle;
-       this.factura = factura;
-       this.productos = productos;
-       this.cantidad = cantidad;
-       this.precioProdCant = precioProdCant;
-    }
-   
+
+      
     public int getIddetalle() {
         return this.iddetalle;
     }
@@ -46,13 +44,6 @@ public class Detalle  implements java.io.Serializable {
     public void setFactura(Factura factura) {
         this.factura = factura;
     }
-    public Productos getProductos() {
-        return this.productos;
-    }
-    
-    public void setProductos(Productos productos) {
-        this.productos = productos;
-    }
     public Integer getCantidad() {
         return this.cantidad;
     }
@@ -66,6 +57,14 @@ public class Detalle  implements java.io.Serializable {
     
     public void setPrecioProdCant(String precioProdCant) {
         this.precioProdCant = precioProdCant;
+    }
+
+    public Producto getProductos() {
+        return productos;
+    }
+
+    public void setProductos(Producto productos) {
+        this.productos = productos;
     }
 
 

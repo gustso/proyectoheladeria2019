@@ -1,5 +1,5 @@
 package aplicacion.hibernate.mapeos;
-// Generated Jun 5, 2019 12:08:53 PM by Hibernate Tools 4.3.1
+// Generated Jun 11, 2019 1:12:09 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
